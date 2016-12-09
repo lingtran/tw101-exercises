@@ -5,6 +5,8 @@ import java.io.PrintStream;
 public class Library {
     private String[] books;
     private PrintStream printStream;
+    private String startCheckAnnouncer = "Checking for books containing %s...\n";
+    private String result = "\tFound title: %s\n";
 
     public Library(String[] books, PrintStream printStream) {
         this.books = books;
@@ -12,5 +14,13 @@ public class Library {
     }
 
     public void printBooksContaining(String partialBookTitle) {
+        System.out.printf(startCheckAnnouncer, partialBookTitle);
+
+        for(String book : books) {
+            if( book.toLowerCase().contains(partialBookTitle.toLowerCase())) {
+                System.out.printf(result, book);
+            }
+        }
+
     }
 }
