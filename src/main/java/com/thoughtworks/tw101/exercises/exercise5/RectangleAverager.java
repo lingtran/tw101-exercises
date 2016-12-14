@@ -7,10 +7,14 @@ public class RectangleAverager {
     public float averageArea(Rectangle[] rectangles) {
         numberOfRectangles = rectangles.length;
 
+        addUpRectangleAreas(rectangles);
+
+        return sumOfRectangleAreas/numberOfRectangles;
+    }
+
+    private void addUpRectangleAreas(Rectangle[] rectangles) {
         for(Rectangle rectangle: rectangles) {
            sumOfRectangleAreas += rectangle.area();
         }
-
-        return sumOfRectangleAreas/numberOfRectangles;
     }
 }
