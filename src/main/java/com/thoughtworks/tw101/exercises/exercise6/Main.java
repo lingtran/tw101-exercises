@@ -8,11 +8,11 @@ import java.util.ArrayList;
 // report the status of all monsters using a void reportStatus() method. ReportStatus should print the name and current hit 
 // points of the monster.
 // * Orcs are named “Orc” and have 20 initial hitpoints
-// * Trolls are     named “Troll”, have 40 hit points and only take half damage
+// * Trolls are named “Troll”, have 40 hit points and only take half damage
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList<Monster> monsters = new ArrayList<Monster>();
+        ArrayList<Monster> monsters = new ArrayList<>();
 
         monsters.add(new Troll());
         monsters.add(new Orc());
