@@ -7,6 +7,13 @@ package com.thoughtworks.tw101.exercises.exercise7;
 public class Main {
 
     public static void main(String[] args) {
+        // program sets random number between 1 and 100
+        // ask user to enter a guess
+        // capture number that user guessed
+        // check if number is too high or too low
+        // if number is too high or too low, report that to user and ask the user to enter another guess
+        // repeat steps between user entering a guess and checking if number is high/low
+        // if the user's guess is correct, provide congratulations
 
     }
 }
