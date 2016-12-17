@@ -6,6 +6,9 @@ package com.thoughtworks.tw101.exercises.exercise8;
 
 public class Main {
     public static void main(String[] args) {
+        GameModerator moderator = new GameModerator();
+        Player player = new Player();
 
+        
     }
 }
