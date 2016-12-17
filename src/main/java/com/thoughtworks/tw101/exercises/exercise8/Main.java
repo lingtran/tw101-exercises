@@ -14,9 +14,14 @@ public class Main {
         moderator.welcomesPlayer();
 
         while(moderator.maintainGameIsInProgress()) {
-            Integer guessedNumber = player.guessNumber();
-            recorder.collectGuess(guessedNumber);
-            moderator.checkPlayerGuess(guessedNumber);
+            try {
+                Integer guess = player.guess();
+                recorder.collectGuess(guess);
+                moderator.checkPlayerGuess(guess);
+
+            } catch(NumberFormatException e) {
+                System.out.println("\nOops! Enter a number as a numeral rather than a word. No need for quotation marks!\n\tValid example: 2.\n\tInvalid examples: Two, '2'.\nTry again.\n");
+            }
         }
 
         recorder.printGuesses();

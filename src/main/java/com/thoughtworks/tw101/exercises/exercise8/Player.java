@@ -7,7 +7,7 @@ public class Player {
 
     public Player() { this.scanner = new Scanner(System.in); }
 
-    public Integer guessNumber() { return Integer.parseInt(scanner.next()); }
+    public Integer guess() { return Integer.parseInt(scanner.next()); }
 
     public void leaves() { scanner.close(); }
 }

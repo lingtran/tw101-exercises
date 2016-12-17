@@ -12,7 +12,7 @@ public class Recorder {
     public void printGuesses() {
         System.out.println("Your guesses:");
         for(Integer guess: this.guesses) {
-            System.out.printf("%d\n", guess);
+            System.out.printf("\t%d\n", guess);
         }
     }
 
