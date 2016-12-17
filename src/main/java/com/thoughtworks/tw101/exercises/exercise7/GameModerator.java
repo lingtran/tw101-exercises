@@ -26,6 +26,10 @@ public class GameModerator {
         }
     }
 
+    public boolean maintainGameIsInProgress() {
+        return this.gameInProgress;
+    }
+
     private void continueTheGame(String message) {
         System.out.println(message);
     }
@@ -33,9 +37,5 @@ public class GameModerator {
     private void endTheGame() {
         System.out.println(congratulatoryMessage);
         this.gameInProgress = false;
-    }
-
-    public boolean maintainGameIsInProgress() {
-        return this.gameInProgress;
     }
 }
