@@ -6,6 +6,7 @@ public class GameModerator {
     private final String guessHighMessage = "\nYour guess is too high. Try again!";
     private final String guessLowMessage = "\nYour guess is too low. Try again!";
     private final String congratulatoryMessage = "\nHooray! You guessed correctly.";
+    private final String farewellMessage = "\nFarewell, friend. Nice work today.";
     private boolean gameInProgress = true;
 
     public void setRandomizedNumber() {
@@ -28,6 +29,10 @@ public class GameModerator {
 
     public boolean maintainGameIsInProgress() {
         return this.gameInProgress;
+    }
+
+    public void bidFarewell() {
+        System.out.println(farewellMessage);
     }
 
     private void continueTheGame(String message) {
