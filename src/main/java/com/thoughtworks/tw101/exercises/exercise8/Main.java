@@ -8,7 +8,19 @@ public class Main {
     public static void main(String[] args) {
         GameModerator moderator = new GameModerator();
         Player player = new Player();
+        Recorder recorder = new Recorder();
 
-        
+        moderator.setNumber();
+        moderator.welcomesPlayer();
+
+        while(moderator.maintainGameIsInProgress()) {
+            Integer guessedNumber = player.guessNumber();
+            recorder.collectGuess(guessedNumber);
+            moderator.checkPlayerGuess(guessedNumber);
+        }
+
+        recorder.printGuesses();
+        moderator.bidFarewell();
+        player.leaves();
     }
 }
