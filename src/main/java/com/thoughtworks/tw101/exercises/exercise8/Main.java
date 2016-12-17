@@ -6,6 +6,26 @@ package com.thoughtworks.tw101.exercises.exercise8;
 
 public class Main {
     public static void main(String[] args) {
+        GameModerator moderator = new GameModerator();
+        Player player = new Player();
+        Recorder recorder = new Recorder();
 
+        moderator.setNumber();
+        moderator.welcomesPlayer();
+
+        while(moderator.maintainGameIsInProgress()) {
+            try {
+                Integer guess = player.guess();
+                recorder.collectGuess(guess);
+                moderator.checkPlayerGuess(guess);
+
+            } catch(NumberFormatException e) {
+                System.out.println("\nOops! Enter a number as a numeral rather than a word. No need for quotation marks!\n\tValid example: 2.\n\tInvalid examples: Two, '2'.\nTry again.\n");
+            }
+        }
+
+        recorder.printGuesses();
+        moderator.bidFarewell();
+        player.leaves();
     }
 }
