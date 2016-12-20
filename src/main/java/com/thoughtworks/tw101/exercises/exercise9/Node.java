@@ -1,11 +1,17 @@
 package com.thoughtworks.tw101.exercises.exercise9;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Collections;
 
-public class Node implements Comparable {
+public class Node implements Comparator<String> {
     private String name;
+
     Node left;
     Node right;
+
+    private ArrayList<String> names = new ArrayList<>();
 
     public Node(String name) {
         this.name = name;
@@ -13,34 +19,49 @@ public class Node implements Comparable {
         this.right = null;
     }
 
-    public void add(Node node, String nameOfNewNode) {
-        // create newNode
-        Node newNode = new Node(nameOfNewNode);
+    public void add(String nameOfNewNode) {
+        insert(this, nameOfNewNode);
+    }
 
-        // if nameOfNode is < currentNode, add to currentNode.left
-        // if nameOfNode is > currentNode, add to currentNode.right
-        // if root is null, assign root to this newNode
-        if(this.name.compareTo(newNode.name) < 0) {
-            add(this.left, newNode.name);
-        } else if (this.name.compareTo(newNode.name) > 0) {
-            add(this.right, newNode.name);
+    private Node insert(Node rootNode, String nameOfNewNode) {
+        if(rootNode == null) {
+            rootNode = new Node(nameOfNewNode);
+            return rootNode;
+        } else if(compare(rootNode.getName(), nameOfNewNode) > 0) {
+            rootNode.left = insert(rootNode.left, nameOfNewNode);
         } else {
-            System.out.println("hmm still thinking about what else");
+            rootNode.right = insert(rootNode.right, nameOfNewNode);
         }
+
+        return rootNode;
     }
 
     public List<String> names() {
-        return null;
+        ArrayList<String> alphabetizedNames = names;
+
+        printNode(this);
+
+        Collections.sort(names);
+
+        return alphabetizedNames;
+    }
+
+    private void printNode(Node rootNode) {
+        if(rootNode == null) {
+            return;
+        }
+        printNode(rootNode.left);
+        printNode(rootNode.right);
+
+        names.add(rootNode.getName());
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override
-    public int compareTo(String name) {
-        if(this.name > name) {
-            return 1;
-        } else if(this.name < name) {
-            return -1;
-        } else {
-            return 0;
-        }
+    public int compare(String nameOfCurrentNode, String nameOfNewNode) {
+        return nameOfCurrentNode.compareTo(nameOfNewNode);
     }
 }
