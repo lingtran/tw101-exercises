@@ -26,7 +26,6 @@ public class Node implements Comparator<String> {
     private Node insert(Node rootNode, String nameOfNewNode) {
         if(rootNode == null) {
             rootNode = new Node(nameOfNewNode);
-            return rootNode;
         } else if(compare(rootNode.getName(), nameOfNewNode) > 0) {
             rootNode.left = insert(rootNode.left, nameOfNewNode);
         } else {
@@ -37,13 +36,11 @@ public class Node implements Comparator<String> {
     }
 
     public List<String> names() {
-        ArrayList<String> alphabetizedNames = names;
-
         printNode(this);
 
         Collections.sort(names);
 
-        return alphabetizedNames;
+        return names;
     }
 
     private void printNode(Node rootNode) {
