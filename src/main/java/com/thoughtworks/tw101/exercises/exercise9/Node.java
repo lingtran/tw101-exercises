@@ -3,7 +3,6 @@ package com.thoughtworks.tw101.exercises.exercise9;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Collections;
 
 public class Node implements Comparator<String> {
     private String name;
@@ -36,21 +35,18 @@ public class Node implements Comparator<String> {
     }
 
     public List<String> names() {
-        printNode(this);
-
-        Collections.sort(names);
-
+        alphabetizeNode(this);
         return names;
     }
 
-    private void printNode(Node rootNode) {
-        if(rootNode == null) {
-            return;
-        }
-        printNode(rootNode.left);
-        printNode(rootNode.right);
-
+    private void alphabetizeNode(Node rootNode) {
+      if(rootNode == null) {
+          return;
+      }
+        alphabetizeNode(rootNode.left);
         names.add(rootNode.getName());
+        alphabetizeNode(rootNode.right);
+
     }
 
     public String getName() {
