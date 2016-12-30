@@ -13,7 +13,12 @@ public class DiamondExercises {
 //             ***
 //            *****
     private static void drawAnIsoscelesTriangle(int n) {
-
+        // center of triangle has n number of stars
+        // row before center has n-2 number of stars
+        // row after center has n + 2 number of stars
+        String star = "*";
+        String test = new String(new char[n]).replace("\0", star);
+        System.out.println(test);
     }
 
 //    Diamond
