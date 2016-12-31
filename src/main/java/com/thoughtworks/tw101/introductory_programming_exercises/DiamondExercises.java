@@ -18,7 +18,7 @@ public class DiamondExercises {
         String triangle = "";
 
         for(int i = 1; i <= n+2; i+=2){
-            String row = StringUtils.center(drawRow(i), n+2);
+            String row = centerRow(drawRow(i), n+2);
             triangle = triangle.concat(row + "\n");
         }
 
@@ -28,6 +28,10 @@ public class DiamondExercises {
     private static String drawRow(int n){
         String star = "*";
         return new String(new char[n]).replace("\0", star);
+    }
+
+    private static String centerRow(String starsForRow, int lengthOfRow) {
+        return StringUtils.center(starsForRow, lengthOfRow);
     }
 
 //    Diamond
