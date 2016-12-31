@@ -82,6 +82,11 @@ public class DiamondExercises {
 //            ***
 //             *
     private static void drawADiamondWithYourName(int n) {
-
+        // Each number of stars in a row gets printed twice
+        // first start at min. of 1 star
+        // next, increment by two stars in the next row
+        // the incrementation occurs until maximum is given arg + 2
+        // once hit max (middle row), in which case print name, then decrement the number of stars in each row
+        // consider an array of stars that go from min to max, then print in reverse order
     }
 }
