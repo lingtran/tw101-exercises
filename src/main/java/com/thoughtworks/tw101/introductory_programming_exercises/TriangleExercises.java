@@ -35,7 +35,13 @@ public class TriangleExercises {
 //            *
 //            *
     private static void drawAVerticalLine(int n) {
+        String verticalLine = "";
 
+        for (int i = 0; i < n; i++) {
+            verticalLine = verticalLine.concat("*\n");
+        }
+
+        System.out.println(verticalLine);
     }
 
 //    Draw a right triangle
