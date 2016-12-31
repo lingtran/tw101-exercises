@@ -19,7 +19,13 @@ public class TriangleExercises {
 //    Given a number n, print n asterisks on one line.
 //    Example when n=8:  ********
     private static void drawAHorizontalLine(int n) {
+        String horizontalLine = "";
 
+        for (int i = 0; i < n; i++) {
+            horizontalLine += "*";
+        }
+
+        System.out.println(horizontalLine);
     }
 
 //    Draw a vertical line
