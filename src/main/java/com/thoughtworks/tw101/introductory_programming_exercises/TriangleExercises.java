@@ -1,5 +1,9 @@
 package com.thoughtworks.tw101.introductory_programming_exercises;
 
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.ArrayList;
+
 public class TriangleExercises {
     public static void main(String[] args) {
         drawAnAsterisk();
@@ -12,14 +16,20 @@ public class TriangleExercises {
 //    Print one asterisk to the console.
 //    Example: *
     private static void drawAnAsterisk() {
-
+        System.out.println("*");
     }
 
 //    Draw a horizontal line
 //    Given a number n, print n asterisks on one line.
 //    Example when n=8:  ********
     private static void drawAHorizontalLine(int n) {
+        String horizontalLine = "";
 
+        for (int i = 0; i < n; i++) {
+            horizontalLine += "*";
+        }
+
+        System.out.println(horizontalLine);
     }
 
 //    Draw a vertical line
@@ -29,7 +39,13 @@ public class TriangleExercises {
 //            *
 //            *
     private static void drawAVerticalLine(int n) {
+        String verticalLine = "";
 
+        for (int i = 0; i < n; i++) {
+            verticalLine = verticalLine.concat("*\n");
+        }
+
+        System.out.println(verticalLine);
     }
 
 //    Draw a right triangle
@@ -39,6 +55,12 @@ public class TriangleExercises {
 //            **
 //            ***
     private static void drawARightTriangle(int n) {
+        ArrayList<String> rows = new ArrayList<>();
 
+        for( int i = 1; i <= n; i++ ) {
+            rows.add(StringUtils.repeat("*", i));
+        }
+
+        System.out.println(StringUtils.join(rows, "\n"));
     }
 }
