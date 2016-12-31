@@ -1,5 +1,9 @@
 package com.thoughtworks.tw101.introductory_programming_exercises;
 
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.ArrayList;
+
 public class TriangleExercises {
     public static void main(String[] args) {
         drawAnAsterisk();
@@ -51,6 +55,12 @@ public class TriangleExercises {
 //            **
 //            ***
     private static void drawARightTriangle(int n) {
+        ArrayList<String> rows = new ArrayList<>();
 
+        for( int i = 1; i <= n; i++ ) {
+            rows.add(StringUtils.repeat("*", i));
+        }
+
+        System.out.println(StringUtils.join(rows, "\n"));
     }
 }
