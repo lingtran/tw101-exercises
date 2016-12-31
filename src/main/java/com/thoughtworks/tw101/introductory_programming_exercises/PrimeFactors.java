@@ -6,21 +6,56 @@ package com.thoughtworks.tw101.introductory_programming_exercises;
 //
 //  For example, generate(1) should return an empty list and generate(30) should return the numbers: 2,3,5.
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class PrimeFactors {
     public static void main(String[] args) {
-        List<Integer> primeFactors = generate(30);
+        Set<Integer> primeFactors = generate(30);
+        System.out.println(primeFactors);
     }
 
-    private static List<Integer> generate(int n) {
-        // given n = 30;
-        // factors = 1, 30, 3, 10, 5, 6, 2, 15
-        // prime factors = 2, 3, 5
+    private static Set<Integer> generate(int n) {
+        List<Integer> primeFactors = new ArrayList<>();
 
-        // start from 2 because that is the first prime number; add 2 to collection; then n/=2
-        // then iterate with remaining prime numbers starting with 3, until Math.sqrt(n); increment i+=2
-            // while n % i == 0, add i to collection; continue to n/=i;
-        return null;
+        if(n == 1) {
+            return null;
+        }
+
+
+        n = pruneCompositeNumbersByDividingIntegerByTwos(n, primeFactors);
+        n = divideIntegerByOddNumbers(n, primeFactors);
+        addIntegerAsPrimeNumberGreaterThanTwo(n, primeFactors);
+
+        return new HashSet(primeFactors);
+    }
+
+    private static int pruneCompositeNumbersByDividingIntegerByTwos(int n, List<Integer> primeFactors) {
+        while(n % 2 == 0) {
+            primeFactors.add(2);
+            n /= 2;
+        }
+        return n;
+    }
+
+
+    private static int divideIntegerByOddNumbers(int n, List<Integer> primeFactors) {
+        for(int i = 3; i <= Math.sqrt(n); i+=2) {
+            while(n%i ==0){
+                primeFactors.add(i);
+                n /= i;
+            }
+        }
+        return n;
+    }
+
+    private static int addIntegerAsPrimeNumberGreaterThanTwo(int n, List<Integer> primeFactors) {
+        if(n > 2) {
+            primeFactors.add(n);
+        }
+
+        return n;
     }
 }
