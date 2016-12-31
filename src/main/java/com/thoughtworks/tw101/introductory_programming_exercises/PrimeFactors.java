@@ -12,50 +12,55 @@ import java.util.List;
 import java.util.Set;
 
 public class PrimeFactors {
+
     public static void main(String[] args) {
         Set<Integer> primeFactors = generate(30);
         System.out.println(primeFactors);
     }
 
+    private int workingInteger;
+    private List<Integer> list;
+
     private static Set<Integer> generate(int n) {
-        List<Integer> primeFactors = new ArrayList<>();
+        PrimeFactors primeFactors = new PrimeFactors(n);
 
         if(n == 1) {
             return null;
         }
 
+        primeFactors.pruneCompositeNumbersByDividingByTwos();
+        primeFactors.divideByOddNumbers();
+        primeFactors.addIfGreaterThanTwo();
 
-        n = pruneCompositeNumbersByDividingIntegerByTwos(n, primeFactors);
-        n = divideIntegerByOddNumbers(n, primeFactors);
-        addIntegerAsPrimeNumberGreaterThanTwo(n, primeFactors);
-
-        return new HashSet(primeFactors);
+        return new HashSet(primeFactors.getList());
     }
 
-    private static int pruneCompositeNumbersByDividingIntegerByTwos(int n, List<Integer> primeFactors) {
-        while(n % 2 == 0) {
-            primeFactors.add(2);
-            n /= 2;
+    public PrimeFactors(int n) {
+        this.workingInteger = n;
+        this.list = new ArrayList<>();
+    }
+
+    public List<Integer> getList() {
+        return list;
+    }
+
+    private void pruneCompositeNumbersByDividingByTwos() {
+        while(workingInteger % 2 == 0) {
+            list.add(2);
+            workingInteger /= 2;
         }
-        return n;
     }
 
-
-    private static int divideIntegerByOddNumbers(int n, List<Integer> primeFactors) {
-        for(int i = 3; i <= Math.sqrt(n); i+=2) {
-            while(n%i ==0){
-                primeFactors.add(i);
-                n /= i;
+    private void divideByOddNumbers() {
+        for(int i = 3; i <= Math.sqrt(workingInteger); i += 2) {
+            while(workingInteger%i ==0){
+                list.add(i);
+                workingInteger /= i;
             }
         }
-        return n;
     }
 
-    private static int addIntegerAsPrimeNumberGreaterThanTwo(int n, List<Integer> primeFactors) {
-        if(n > 2) {
-            primeFactors.add(n);
-        }
-
-        return n;
+    private void addIfGreaterThanTwo() {
+        if(workingInteger > 2) { list.add(workingInteger); }
     }
 }
