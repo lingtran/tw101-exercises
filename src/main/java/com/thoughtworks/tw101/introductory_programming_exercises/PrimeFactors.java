@@ -14,6 +14,13 @@ public class PrimeFactors {
     }
 
     private static List<Integer> generate(int n) {
+        // given n = 30;
+        // factors = 1, 30, 3, 10, 5, 6, 2, 15
+        // prime factors = 2, 3, 5
+
+        // start from 2 because that is the first prime number; add 2 to collection; then n/=2
+        // then iterate with remaining prime numbers starting with 3, until Math.sqrt(n); increment i+=2
+            // while n % i == 0, add i to collection; continue to n/=i;
         return null;
     }
 }
