@@ -1,7 +1,8 @@
 package com.thoughtworks.tw101.introductory_programming_exercises;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class DiamondExercises {
-    String triangle;
     public static void main(String[] args) {
         drawAnIsoscelesTriangle(3);
         drawADiamond(8);
@@ -17,8 +18,8 @@ public class DiamondExercises {
         String triangle = "";
 
         for(int i = 1; i <= n+2; i+=2){
-            String row = drawRow(i);
-            triangle += row + "\n";
+            String row = StringUtils.center(drawRow(i), n+2);
+            triangle = triangle.concat(row + "\n");
         }
 
         System.out.println(triangle);
