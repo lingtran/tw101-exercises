@@ -2,6 +2,9 @@ package com.thoughtworks.tw101.introductory_programming_exercises;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class DiamondExercises {
     public static void main(String[] args) {
         drawAnIsoscelesTriangle(3);
@@ -82,11 +85,41 @@ public class DiamondExercises {
 //            ***
 //             *
     private static void drawADiamondWithYourName(int n) {
-        // Each number of stars in a row gets printed twice
-        // first start at min. of 1 star
-        // next, increment by two stars in the next row
-        // the incrementation occurs until maximum is given arg + 2
-        // once hit max (middle row), in which case print name, then decrement the number of stars in each row
-        // consider an array of stars that go from min to max, then print in reverse order
+        int minNumOfStars = 1;
+        int maxNumOfStars = n+2;
+
+        ArrayList<String> stars = new ArrayList<>(drawStars(n, minNumOfStars, maxNumOfStars));
+
+        drawDiamondTop(stars);
+        drawDiamondBottom(stars);
+    }
+
+    private static ArrayList drawStars(int n, int minNumOfStars, int maxNumOfStars) {
+        ArrayList<String> stars = new ArrayList<>();
+
+        for(int numOfStars = minNumOfStars; numOfStars <= maxNumOfStars; numOfStars+=2) {
+            if(numOfStars == maxNumOfStars) {
+                stars.add(centerRow("Ling", maxNumOfStars));
+            } else {
+                stars.add(centerRow(drawRow(numOfStars), maxNumOfStars));
+            }
+        }
+
+        return stars;
+    }
+
+    private static void drawDiamondTop(ArrayList<String> stars) {
+        for(String star: stars) {
+            System.out.println(star);
+        }
+    }
+
+    private static void drawDiamondBottom(ArrayList<String> stars) {
+        Collections.reverse(stars);
+        for(String star: stars) {
+            if (stars.indexOf(star) != 0) {
+                System.out.println(star);
+            }
+        }
     }
 }
