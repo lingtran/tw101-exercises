@@ -18,8 +18,8 @@ public class DiamondExercises {
     private static void drawAnIsoscelesTriangle(int n) {
         String triangle = "";
 
-        for(int i = 1; i <= n+2; i+=2){
-            String row = centerRow(drawRow(i), n+2);
+        for(int numberOfStars = 1; numberOfStars <= n+2; numberOfStars+=2){
+            String row = centerRow(drawRow(numberOfStars), n+2);
             triangle = triangle.concat(row + "\n");
         }
 
