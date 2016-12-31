@@ -1,6 +1,7 @@
 package com.thoughtworks.tw101.introductory_programming_exercises;
 
 public class DiamondExercises {
+    String triangle;
     public static void main(String[] args) {
         drawAnIsoscelesTriangle(3);
         drawADiamond(8);
@@ -13,12 +14,19 @@ public class DiamondExercises {
 //             ***
 //            *****
     private static void drawAnIsoscelesTriangle(int n) {
-        // center of triangle has n number of stars
-        // row before center has n-2 number of stars
-        // row after center has n + 2 number of stars
+        String triangle = "";
+
+        for(int i = 1; i <= n+2; i+=2){
+            String row = drawRow(i);
+            triangle += row + "\n";
+        }
+
+        System.out.println(triangle);
+    }
+
+    private static String drawRow(int n){
         String star = "*";
-        String test = new String(new char[n]).replace("\0", star);
-        System.out.println(test);
+        return new String(new char[n]).replace("\0", star);
     }
 
 //    Diamond
