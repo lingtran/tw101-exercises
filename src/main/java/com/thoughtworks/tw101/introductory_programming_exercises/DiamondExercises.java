@@ -42,6 +42,19 @@ public class DiamondExercises {
 //             ***
 //              *
     private static void drawADiamond(int n) {
+        String diamond = "";
+
+        for(int i = 1; i <= n+2; i+=2){
+            String row = centerRow(drawRow(i), n+2);
+            diamond = diamond.concat(row + "\n");
+        }
+
+        for(int i = n; i >= 1; i-=2) {
+            String row = centerRow(drawRow(i), n+2);
+            diamond = diamond.concat(row + "\n");
+        }
+
+        System.out.println(diamond);
 
     }
 
