@@ -6,6 +6,7 @@ public class DiamondExercises {
     public static void main(String[] args) {
         drawAnIsoscelesTriangle(3);
         drawADiamond(8);
+        drawADiamond(3);
         drawADiamondWithYourName(3);
     }
 
@@ -26,8 +27,8 @@ public class DiamondExercises {
     }
 
     private static String drawRow(int n){
-        String star = "*";
-        return new String(new char[n]).replace("\0", star);
+        String stars = "*";
+        return new String(new char[n]).replace("\0", stars);
     }
 
     private static String centerRow(String starsForRow, int lengthOfRow) {
@@ -42,20 +43,34 @@ public class DiamondExercises {
 //             ***
 //              *
     private static void drawADiamond(int n) {
-        String diamond = "";
+        if(n % 2 == 0) {
+            System.out.println("Argument must be an even number");
+        } else {
+            String diamond = drawTop(n) + drawBottom(n);
+            System.out.println(diamond);
+        }
+    }
 
-        for(int i = 1; i <= n+2; i+=2){
-            String row = centerRow(drawRow(i), n+2);
-            diamond = diamond.concat(row + "\n");
+    private static String drawTop(int n) {
+        String topHalf = "";
+
+        for(int numberOfStars = 1; numberOfStars <= n+2; numberOfStars+=2){
+            String row = centerRow(drawRow(numberOfStars), n+2);
+            topHalf = topHalf.concat(row + "\n");
         }
 
-        for(int i = n; i >= 1; i-=2) {
-            String row = centerRow(drawRow(i), n+2);
-            diamond = diamond.concat(row + "\n");
+        return topHalf;
+    }
+
+    private static String drawBottom(int n) {
+        String bottomHalf = "";
+
+        for(int numberOfStars = n; numberOfStars > 0; numberOfStars-=2) {
+            String row = centerRow(drawRow(numberOfStars), n+2);
+            bottomHalf = bottomHalf.concat(row + "\n");
         }
 
-        System.out.println(diamond);
-
+        return bottomHalf;
     }
 
 //    Diamond with Name
